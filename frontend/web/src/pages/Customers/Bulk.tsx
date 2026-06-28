@@ -25,7 +25,6 @@ const BulkCustomers = () => {
     { key: 'name', header: 'Customer Name' },
     { key: 'bookingVolume', header: 'Booking Volume' },
     { key: 'revenue', header: 'Revenue (₹)' },
-  ,
     { key: 'entryBy', header: 'Entry By', render: (val: any) => val || 'N/A' }
   ];
 

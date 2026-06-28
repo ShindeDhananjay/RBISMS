@@ -81,7 +81,7 @@ const EmployeeManagement = () => {
       setCreateMobile('');
       setCreateUsername('');
       setCreatePassword('');
-      setCreateSelectedModules('');
+      setCreateSelectedModules([]);
       setEditingId(null);
       
       // Refresh list

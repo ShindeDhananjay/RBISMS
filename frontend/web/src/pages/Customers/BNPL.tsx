@@ -51,7 +51,6 @@ const BNPLCustomers = () => {
     { key: 'customerId', header: 'Customer ID' },
     { key: 'validity', header: 'Validity' },
     { key: 'productType', header: 'Product Type' },
-  ,
     { key: 'entryBy', header: 'Entry By', render: (val: any) => val || 'N/A' }
   ];
 

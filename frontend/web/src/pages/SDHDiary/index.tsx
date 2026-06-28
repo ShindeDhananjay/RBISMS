@@ -61,7 +61,6 @@ const SDHDiary = () => {
     { key: 'toTime', header: 'To Time' },
     { key: 'distance', header: 'Distance (KM)' },
     { key: 'purposeOfVisit', header: 'Purpose of Visit' },
-  ,
     { key: 'entryBy', header: 'Entry By', render: (val: any) => val || 'N/A' }
   ];
 

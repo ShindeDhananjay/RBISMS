@@ -25,7 +25,6 @@ const HospitalSurvey = () => {
     { key: 'hospitalName', header: 'Hospital Name' },
     { key: 'doctorCount', header: 'Doctors' },
     { key: 'bedCount', header: 'Beds' },
-  ,
     { key: 'entryBy', header: 'Entry By', render: (val: any) => val || 'N/A' }
   ];
 

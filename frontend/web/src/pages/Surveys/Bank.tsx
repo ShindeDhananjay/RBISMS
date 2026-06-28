@@ -25,7 +25,6 @@ const BankSurvey = () => {
     { key: 'bankName', header: 'Bank Name' },
     { key: 'branchDetails', header: 'Branch Details' },
     { key: 'salaryAccounts', header: 'Salary Accounts' },
-  ,
     { key: 'entryBy', header: 'Entry By', render: (val: any) => val || 'N/A' }
   ];
 

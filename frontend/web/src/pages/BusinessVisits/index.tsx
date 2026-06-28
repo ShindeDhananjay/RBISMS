@@ -66,7 +66,6 @@ const BusinessVisits = () => {
         background: val === 'Complete' ? 'rgba(74,222,128,0.15)' : 'rgba(234,179,8,0.15)',
         color: val === 'Complete' ? '#16a34a' : '#ca8a04' }}>{val || 'Pending'}</span>
     )},
-  ,
     { key: 'entryBy', header: 'Entry By', render: (val: any) => val || 'N/A' }
   ];
 

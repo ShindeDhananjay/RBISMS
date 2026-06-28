@@ -24,7 +24,6 @@ const GramPanchayat = () => {
   const columns = [
     { key: 'sarpanchName', header: 'Sarpanch Name' },
     { key: 'gramSevakName', header: 'Gram Sevak Name' },
-  ,
     { key: 'entryBy', header: 'Entry By', render: (val: any) => val || 'N/A' }
   ];
 

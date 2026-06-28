@@ -25,7 +25,6 @@ const SHGSurvey = () => {
     { key: 'shgName', header: 'SHG Name' },
     { key: 'membersCount', header: 'Members' },
     { key: 'totalSavings', header: 'Total Savings' },
-  ,
     { key: 'entryBy', header: 'Entry By', render: (val: any) => val || 'N/A' }
   ];
 

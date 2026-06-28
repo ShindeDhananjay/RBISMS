@@ -25,7 +25,6 @@ const SchoolSurvey = () => {
     { key: 'schoolName', header: 'School Name' },
     { key: 'studentCount', header: 'Students' },
     { key: 'staffCount', header: 'Staff' },
-  ,
     { key: 'entryBy', header: 'Entry By', render: (val: any) => val || 'N/A' }
   ];
 

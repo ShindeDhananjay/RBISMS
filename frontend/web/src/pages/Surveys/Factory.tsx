@@ -25,7 +25,6 @@ const FactorySurvey = () => {
     { key: 'factoryName', header: 'Factory Name' },
     { key: 'employeeCount', header: 'Employees' },
     { key: 'dispatchVolume', header: 'Dispatch Volume' },
-  ,
     { key: 'entryBy', header: 'Entry By', render: (val: any) => val || 'N/A' }
   ];
 

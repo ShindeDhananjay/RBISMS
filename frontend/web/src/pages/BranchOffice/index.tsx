@@ -71,7 +71,6 @@ const BranchOffice = () => {
         </span>
       );
     }},
-  ,
     { key: 'entryBy', header: 'Entry By', render: (val: any) => val || 'N/A' }
   ];
 

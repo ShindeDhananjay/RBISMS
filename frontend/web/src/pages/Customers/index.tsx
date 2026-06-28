@@ -30,7 +30,6 @@ const Customers = () => {
         background: val === 'Active' ? 'rgba(74,222,128,0.15)' : 'rgba(85,2,98,0.1)',
         color: val === 'Active' ? '#16a34a' : 'var(--ip-red)' }}>{val || 'Active'}</span>
     )},
-  ,
     { key: 'entryBy', header: 'Entry By', render: (val: any) => val || 'N/A' }
   ];
 
