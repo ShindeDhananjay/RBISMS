@@ -1,0 +1,52 @@
+{
+  "village": {
+    "title": "Village Master",
+    "add": "Add Village",
+    "fields": {
+      "name": "Village Name",
+      "code": "Village Code",
+      "censusCode": "Census Code",
+      "bo": "Branch Office",
+      "pin": "PIN Code",
+      "taluka": "Taluka",
+      "district": "District",
+      "state": "State",
+      "population": "Total Population",
+      "families": "Total Families",
+      "literacy": "Literacy Rate (%)",
+      "businessScore": "Business Potential Score",
+      "priority": "Priority"
+    }
+  },
+  "survey": {
+    "anganwadi": "Anganwadi Survey",
+    "shg": "SHG Survey",
+    "education": "Education Module",
+    "healthcare": "Healthcare Module",
+    "financial": "Financial Institutions",
+    "industry": "Industry & Commerce",
+    "gramPanchayat": "Gram Panchayat"
+  },
+  "business": {
+    "bnpl": "BNPL Customers",
+    "bulkBooking": "Bulk Booking",
+    "visit": "Business Visit"
+  },
+  "postalProducts": {
+    "savings": "POSB Savings Account",
+    "rd": "Recurring Deposit (RD)",
+    "td": "Time Deposit (TD)",
+    "mis": "Monthly Income Scheme (MIS)",
+    "scss": "Senior Citizen Savings Scheme",
+    "ssa": "Sukanya Samriddhi Account",
+    "kvp": "Kisan Vikas Patra",
+    "nsc": "National Savings Certificate",
+    "pli": "Postal Life Insurance",
+    "rpli": "Rural PLI",
+    "speedPost": "Speed Post",
+    "parcel": "Parcel",
+    "bnpl": "Buy Now Pay Later",
+    "ippb": "IPPB Account",
+    "aadhaar": "Aadhaar Services"
+  }
+}

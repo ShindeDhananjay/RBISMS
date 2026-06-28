@@ -1,0 +1,54 @@
+{
+  "app": {
+    "name": "आईपी-आरबीआईएसएमएस",
+    "tagline": "एक राष्ट्र • एक ग्राम डेटाबेस • एक व्यापार खुफिया मंच"
+  },
+  "nav": {
+    "dashboard": "डैशबोर्ड",
+    "organization": "संगठन",
+    "villages": "गाँव",
+    "surveys": "सर्वे मॉड्यूल",
+    "business": "व्यापार",
+    "reports": "रिपोर्ट",
+    "aiIntelligence": "एआई इंटेलिजेंस",
+    "notifications": "अधिसूचनाएं",
+    "documents": "दस्तावेज़",
+    "users": "उपयोगकर्ता",
+    "settings": "सेटिंग्स"
+  },
+  "actions": {
+    "add": "नया जोड़ें",
+    "edit": "संपादित करें",
+    "delete": "हटाएं",
+    "save": "सहेजें",
+    "cancel": "रद्द करें",
+    "search": "खोजें",
+    "filter": "फ़िल्टर",
+    "export": "निर्यात",
+    "exportPdf": "PDF निर्यात",
+    "exportExcel": "Excel निर्यात",
+    "exportCsv": "CSV निर्यात",
+    "view": "देखें",
+    "submit": "जमा करें",
+    "back": "वापस",
+    "next": "आगे"
+  },
+  "status": {
+    "active": "सक्रिय",
+    "inactive": "निष्क्रिय",
+    "pending": "लंबित",
+    "completed": "पूर्ण",
+    "inProgress": "प्रगति में",
+    "notStarted": "शुरू नहीं हुआ",
+    "verified": "सत्यापित",
+    "rejected": "अस्वीकृत"
+  },
+  "messages": {
+    "saveSuccess": "रिकॉर्ड सफलतापूर्वक सहेजा गया",
+    "deleteSuccess": "रिकॉर्ड सफलतापूर्वक हटाया गया",
+    "deleteConfirm": "क्या आप इस रिकॉर्ड को हटाना चाहते हैं?",
+    "noData": "कोई डेटा नहीं मिला",
+    "loading": "लोड हो रहा है...",
+    "error": "कुछ गलत हुआ। कृपया पुनः प्रयास करें।"
+  }
+}

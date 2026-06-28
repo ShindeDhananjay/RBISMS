@@ -1,0 +1,21 @@
+export const BRANCH_OFFICES = [
+  "Navin Dahipal", "Ghevari BO", "Gaikwad Jalgaon B.O", "Shekte B.O", "Chapadgaon B.O",
+  "Hatgaon B.O", "Kambi B.O", "Khampimpri B.O", "Mungi B.O", "Thakur Pimpalgaon B.O",
+  "Bhalgaon B.O", "Bhutstakali B.O", "Midsangavi B.O", "Munguswade B.O", "Nandur Nimba Daitya B.O",
+  "Yeli B.O", "Dhorjalgaon B.O", "Khospuri B.O", "Mahalaxmi Hiware B.O", "Maka B.O",
+  "Mohoj BK B.O", "Nimbe Nandur B.O", "Shingave Keshav B.O", "Vagholi B.O", "Akhegaon Titarfa B.O",
+  "Akola B.O", "Alhanwadi B.O", "Chichpur Pangul B.O", "Chinchpur Ijde B.O", "Jatdeola B.O",
+  "Koradgaon B.O", "Manikdaundi B.O", "Mohojdeoda B.O", "Mohote B.O", "Nipani Jalgaon B.O",
+  "Pagori Pimpalgaon B.O", "Pimpalgaontappa B.O", "Sakegaon B.O", "Takali Manur B.O", "Tunduli B.O",
+  "Wadgaon B.O", "Akhatwade B.O", "Bhatkudgaon B.O", "Bhavinimgaon B.O", "Dahigaon B.O",
+  "Deutakli B.O", "Ghotan B.O", "Gulegaon B.O", "Hasnapur B.O", "Joharapur B.O",
+  "Kharadgaon B.O", "Ladjalgaon B.O", "Malegaon B.O", "Rakshi B.O", "Ranegaon B.O",
+  "Samangaon B.O", "Samsud Erandgaon B.O", "Shahar Takali B.O", "Shingori B.O", "Sultanpur BK B.O",
+  "Tajnapur B.O", "Vadule BK B.O", "Varur BK B.O", "Khanapur BO B.O", "Chichondi Shiral B.O",
+  "Devrai B.O", "Ghatshiras B.O", "Karanji B.O", "Khandgaon Lohsar B.O", "Kolhar B.O",
+  "Majle Chincholi B.O", "Mandve B.O", "Nivdunga B.O", "Shiral B.O", "Shirapur B.O",
+  "Vaiju Babulgaon B.O", "Amarapur B.O", "Avane BK B.O", "Jawkhede Khalsa B.O", "Kasar Pimpalgaon B.O",
+  "Padali B.O", "Sultanpur KHD B.O", "Susare B.O", "Balamtakali S.O", "Bodhegaon S.O",
+  "Kharwandi Kasar S.O", "Miri S.O", "Pathardi S.O", "Shevgaon S.O", "Tisgaon S.O",
+  "Vridheshwar SSK S.O", "Other"
+];

@@ -1,0 +1,35 @@
+-- ============================================================
+-- IP-RBISMS Database Schema
+-- India Post Rural Business Intelligence & Survey Management System
+-- Database: MySQL 8.0
+-- ============================================================
+
+-- Table 1: circles
+-- Table 2: regions
+-- Table 3: divisions
+-- Table 4: sub_divisions
+-- Table 5: head_offices
+-- Table 6: sub_offices
+-- Table 7: branch_offices
+-- Table 8: users
+-- Table 9: roles
+-- Table 10: activity_logs
+-- Table 11: otp_records
+-- Table 12: villages (core table – 80+ columns)
+-- Table 13: anganwadis
+-- Table 14: shgs
+-- Table 15: education_institutions
+-- Table 16: healthcare_institutions
+-- Table 17: financial_institutions
+-- Table 18: industries
+-- Table 19: gram_panchayats
+-- Table 20: bnpl_customers
+-- Table 21: bulk_customers
+-- Table 22: business_visits
+-- Table 23: documents
+-- Table 24: notifications
+-- Table 25: ai_village_scores (computed/cached AI scores)
+
+-- ============================================================
+-- Full DDL to be implemented here
+-- ============================================================
