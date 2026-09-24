@@ -21,6 +21,7 @@ export interface IAnganwadiSurvey extends Document {
   matruvandanaAccount?: string;
   gps?: string;
   userId?: mongoose.Types.ObjectId;
+  adminId?: mongoose.Types.ObjectId;
   entryBy?: string;
   createdAt: Date;
   updatedAt: Date;
@@ -48,6 +49,7 @@ const AnganwadiSurveySchema: Schema = new Schema({
   gps: { type: String }
 ,
   userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+  adminId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
   entryBy: { type: String }
 }, { timestamps: true });
 

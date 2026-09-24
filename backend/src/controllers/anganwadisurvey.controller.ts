@@ -1,3 +1,4 @@
+import { getDataScopeFilter } from '../utils/dataScope';
 import { Request, Response, NextFunction } from 'express';
 import AnganwadiSurvey from '../models/AnganwadiSurvey';
 
@@ -11,7 +12,7 @@ export const createAnganwadiSurvey = async (req: Request, res: Response, next: N
 
 export const getAllAnganwadiSurvey = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
-    const userFilter = (req as any).user && (req as any).user.role !== 'Super Admin' ? { userId: (req as any).user.id } : {};
+    const userFilter = await getDataScopeFilter(req);
 
     const data = await AnganwadiSurvey.find(userFilter);
     res.json({ data });

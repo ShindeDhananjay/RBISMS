@@ -9,6 +9,7 @@ export interface IFranchisee extends Document {
   dateOfIssue?: Date;
   dateOfExpiry?: Date;
   userId?: mongoose.Types.ObjectId;
+  adminId?: mongoose.Types.ObjectId;
   entryBy?: string;
   createdAt: Date;
   updatedAt: Date;
@@ -24,6 +25,7 @@ const FranchiseeSchema: Schema = new Schema({
   dateOfExpiry: { type: Date }
 ,
   userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+  adminId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
   entryBy: { type: String }
 }, { timestamps: true });
 

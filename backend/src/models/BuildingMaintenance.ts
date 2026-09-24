@@ -23,6 +23,7 @@ export interface IBuildingMaintenance extends Document {
   requirementOfFurnitureFromOwner?: string;
   lastDateOfSanitizationOfBuilding?: Date;
   userId?: mongoose.Types.ObjectId;
+  adminId?: mongoose.Types.ObjectId;
   entryBy?: string;
   createdAt: Date;
   updatedAt: Date;
@@ -52,6 +53,7 @@ const BuildingMaintenanceSchema: Schema = new Schema({
   lastDateOfSanitizationOfBuilding: { type: Date }
 ,
   userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+  adminId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
   entryBy: { type: String }
 }, { timestamps: true });
 

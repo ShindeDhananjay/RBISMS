@@ -6,6 +6,7 @@ export interface ISDHInspection extends Document {
   dateOfInspection?: Date;
   result?: string;
   userId?: mongoose.Types.ObjectId;
+  adminId?: mongoose.Types.ObjectId;
   entryBy?: string;
   createdAt: Date;
   updatedAt: Date;
@@ -17,6 +18,7 @@ const SDHInspectionSchema: Schema = new Schema({
   dateOfInspection: { type: Date },
   result: { type: String },
   userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+  adminId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
   entryBy: { type: String }
 }, { timestamps: true });
 

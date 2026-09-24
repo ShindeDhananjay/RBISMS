@@ -1,3 +1,4 @@
+import { getDataScopeFilter } from '../utils/dataScope';
 import { Request, Response } from 'express';
 import SelfHelpGroup from '../models/SelfHelpGroup';
 
@@ -13,7 +14,7 @@ export const createSelfHelpGroup = async (req: Request, res: Response) => {
 
 export const getAllSelfHelpGroups = async (req: Request, res: Response) => {
   try {
-    const userFilter = (req as any).user && (req as any).user.role !== 'Super Admin' ? { userId: (req as any).user.id } : {};
+    const userFilter = await getDataScopeFilter(req);
 
     const entries = await SelfHelpGroup.find(userFilter).sort({ createdAt: -1 });
     res.status(200).json({ success: true, data: entries });

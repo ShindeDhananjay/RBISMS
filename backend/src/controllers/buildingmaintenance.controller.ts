@@ -1,3 +1,4 @@
+import { getDataScopeFilter } from '../utils/dataScope';
 import { Request, Response, NextFunction } from 'express';
 import BuildingMaintenance from '../models/BuildingMaintenance';
 
@@ -13,7 +14,7 @@ export const createBuildingMaintenance = async (req: Request, res: Response, nex
 
 export const getAllBuildingMaintenances = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
-    const userFilter = (req as any).user && (req as any).user.role !== 'Super Admin' ? { userId: (req as any).user.id } : {};
+    const userFilter = await getDataScopeFilter(req);
 
     const records = await BuildingMaintenance.find(userFilter).sort({ createdAt: -1 });
     res.json({ data: records });

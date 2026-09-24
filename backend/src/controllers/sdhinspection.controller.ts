@@ -1,3 +1,4 @@
+import { getDataScopeFilter } from '../utils/dataScope';
 import { Request, Response } from 'express';
 import SDHInspection from '../models/SDHInspection';
 
@@ -13,7 +14,7 @@ export const createSDHInspection = async (req: Request, res: Response): Promise<
 
 export const getAllSDHInspection = async (req: Request, res: Response): Promise<void> => {
   try {
-    const userFilter = (req as any).user && (req as any).user.role !== 'Super Admin' ? { userId: (req as any).user.id } : {};
+    const userFilter = await getDataScopeFilter(req);
 
     const entries = await SDHInspection.find(userFilter).sort({ createdAt: -1 });
     res.status(200).json({ success: true, data: entries });

@@ -1,3 +1,4 @@
+import { getDataScopeFilter } from '../utils/dataScope';
 import { Request, Response, NextFunction } from 'express';
 import Village from '../models/Village';
 import { AuthRequest } from '../middleware/auth';
@@ -14,7 +15,7 @@ export const createVillage = async (req: AuthRequest, res: Response, next: NextF
 
 export const getAllVillage = async (req: AuthRequest, res: Response, next: NextFunction): Promise<void> => {
   try {
-    const userFilter = (req as any).user && (req as any).user.role !== 'Super Admin' ? { userId: (req as any).user.id } : {};
+    const userFilter = await getDataScopeFilter(req);
 
     let query: any = {};
     if (req.user?.role === 'User') {

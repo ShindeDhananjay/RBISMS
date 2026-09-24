@@ -3,6 +3,7 @@ import mongoose, { Schema, Document } from 'mongoose';
 export interface ISubOffice extends Document {
   // Add interfaces manually if strictly typed
   userId?: mongoose.Types.ObjectId;
+  adminId?: mongoose.Types.ObjectId;
   entryBy?: string;
   createdAt: Date;
   updatedAt: Date;
@@ -12,6 +13,7 @@ const SubOfficeSchema: Schema = new Schema({
   pinCode: {type: String, required: true}, name: {type: String, required: true}, noOfEmployees: {type: Number, default: 0}, status: {type: String, default: 'Active'}
 ,
   userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+  adminId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
   entryBy: { type: String }
 }, { timestamps: true });
 

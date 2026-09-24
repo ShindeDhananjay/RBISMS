@@ -10,7 +10,7 @@ export interface AuthRequest extends Request {
   };
 }
 
-import User from '../models/User';
+import User, { Role } from '../models/User';
 
 export const authenticate = async (req: AuthRequest, res: Response, next: NextFunction): Promise<void> => {
   try {
@@ -23,12 +23,17 @@ export const authenticate = async (req: AuthRequest, res: Response, next: NextFu
     const token = authHeader.split(' ')[1];
     const decoded = jwt.verify(token, JWT_SECRET) as { id: string; role: string };
     
-    // Inject entryBy for all incoming write operations
+    // Inject entryBy, userId, and adminId for all incoming write operations
     if (req.method === 'POST' || req.method === 'PUT' || req.method === 'PATCH') {
       const user = await User.findById(decoded.id);
       if (user) {
         req.body.entryBy = user.employeeName || user.username;
         req.body.userId = decoded.id;
+        if (user.role === Role.ADMIN) {
+          req.body.adminId = user._id;
+        } else if (user.createdBy) {
+          req.body.adminId = user.createdBy;
+        }
       }
     }
 

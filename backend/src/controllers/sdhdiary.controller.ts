@@ -1,3 +1,4 @@
+import { getDataScopeFilter } from '../utils/dataScope';
 import { Request, Response } from 'express';
 import SDHDiary from '../models/SDHDiary';
 
@@ -15,7 +16,7 @@ export const createSDHDiary = async (req: Request, res: Response) => {
 // Get all SDH Diary entries
 export const getAllSDHDiary = async (req: Request, res: Response) => {
   try {
-    const userFilter = (req as any).user && (req as any).user.role !== 'Super Admin' ? { userId: (req as any).user.id } : {};
+    const userFilter = await getDataScopeFilter(req);
 
     const entries = await SDHDiary.find(userFilter).sort({ createdAt: -1 });
     res.status(200).json({ success: true, data: entries });

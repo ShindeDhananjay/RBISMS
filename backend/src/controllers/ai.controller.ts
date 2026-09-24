@@ -1,10 +1,11 @@
+import { getDataScopeFilter } from '../utils/dataScope';
 import { Request, Response } from 'express';
 // We would ideally import all the survey models here to calculate real scores.
 // For now, we will mock the AI aggregation logic as a foundational start.
 
 export const generateScore = async (req: Request, res: Response) => {
   try {
-    const userFilter = (req as any).user && (req as any).user.role !== 'Super Admin' ? { userId: (req as any).user.id } : {};
+    const userFilter = await getDataScopeFilter(req);
 
     const { villageId } = req.params;
 

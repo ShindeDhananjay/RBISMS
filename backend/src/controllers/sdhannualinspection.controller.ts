@@ -1,3 +1,4 @@
+import { getDataScopeFilter } from '../utils/dataScope';
 import { Request, Response } from 'express';
 import SDHAnnualInspection from '../models/SDHAnnualInspection';
 
@@ -13,7 +14,7 @@ export const createSDHAnnualInspection = async (req: Request, res: Response) => 
 
 export const getAllSDHAnnualInspections = async (req: Request, res: Response) => {
   try {
-    const userFilter = (req as any).user && (req as any).user.role !== 'Super Admin' ? { userId: (req as any).user.id } : {};
+    const userFilter = await getDataScopeFilter(req);
 
     const entries = await SDHAnnualInspection.find(userFilter).sort({ createdAt: -1 });
     res.status(200).json({ success: true, data: entries });

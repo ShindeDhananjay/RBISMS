@@ -1,3 +1,4 @@
+import { getDataScopeFilter } from '../utils/dataScope';
 import { Request, Response } from 'express';
 import InstituteMSME from '../models/InstituteMSME';
 
@@ -13,7 +14,7 @@ export const createInstituteMSME = async (req: Request, res: Response) => {
 
 export const getAllInstituteMSMEs = async (req: Request, res: Response) => {
   try {
-    const userFilter = (req as any).user && (req as any).user.role !== 'Super Admin' ? { userId: (req as any).user.id } : {};
+    const userFilter = await getDataScopeFilter(req);
 
     const entries = await InstituteMSME.find(userFilter).sort({ createdAt: -1 });
     res.status(200).json({ success: true, data: entries });

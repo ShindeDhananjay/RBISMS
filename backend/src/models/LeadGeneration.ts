@@ -15,6 +15,7 @@ export interface ILeadGeneration extends Document {
   status?: string; // e.g., Pending, Follow-up, Converted
   followUpDate?: Date;
   userId?: mongoose.Types.ObjectId;
+  adminId?: mongoose.Types.ObjectId;
   entryBy?: string;
   createdAt: Date;
   updatedAt: Date;
@@ -36,6 +37,7 @@ const LeadGenerationSchema: Schema = new Schema({
   followUpDate: { type: Date }
 ,
   userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+  adminId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
   entryBy: { type: String }
 }, { timestamps: true });
 
