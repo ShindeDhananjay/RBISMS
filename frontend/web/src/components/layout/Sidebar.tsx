@@ -26,8 +26,7 @@ const Sidebar = () => {
   return (
     <nav className="sidebar glass-panel animate-fade-in" style={{ overflowY: 'auto' }}>
       <div className="logo-container">
-        <h2 style={{ fontSize: '1.25rem', lineHeight: '1.2', fontWeight: 900, fontFamily: '"Georgia", serif', color: 'var(--ip-red)', letterSpacing: '0.5px' }}>Shevgaon Sub Division</h2>
-        <p>Intelligence Platform</p>
+        <h2 style={{ fontSize: '1.25rem', lineHeight: '1.25', fontWeight: 900, fontFamily: '"Georgia", serif', color: 'var(--ip-red)', letterSpacing: '0.5px', marginBottom: '28px' }}>Intelligence Platform</h2>
       </div>
       <ul className="nav-links">
         
