@@ -72,15 +72,35 @@ const ReportsDashboard = () => {
 
         <div style={{ marginBottom: '24px' }}>
           <label style={{ display: 'block', marginBottom: '8px', color: 'var(--text-secondary)', fontWeight: 'bold' }}>Data Module</label>
-          <select 
+          <input 
+            type="text"
             value={selectedModule} 
             onChange={(e) => setSelectedModule(e.target.value)}
-            style={{ width: '100%', maxWidth: '400px', padding: '12px', background: 'var(--bg-color)', border: '1px solid var(--panel-border)', color: 'var(--text-primary)', borderRadius: '4px' }}
-          >
+            placeholder="Enter module name (e.g. villages, anganwadisurveys)"
+            style={{ width: '100%', maxWidth: '400px', padding: '12px 16px', background: '#fff', border: '1.5px solid var(--panel-border)', color: 'var(--text-primary)', borderRadius: '12px', fontSize: '0.95rem', outline: 'none' }}
+          />
+          <div style={{ marginTop: '12px', display: 'flex', gap: '8px', flexWrap: 'wrap', maxWidth: '700px' }}>
             {modules.map(mod => (
-              <option key={mod.value} value={mod.value}>{mod.label}</option>
+              <button
+                type="button"
+                key={mod.value}
+                onClick={() => setSelectedModule(mod.value)}
+                style={{
+                  padding: '6px 14px',
+                  borderRadius: '20px',
+                  border: `1px solid ${selectedModule === mod.value ? 'var(--ip-red)' : 'var(--panel-border)'}`,
+                  background: selectedModule === mod.value ? 'rgba(239, 68, 68, 0.1)' : '#fff',
+                  color: selectedModule === mod.value ? 'var(--ip-red)' : 'var(--text-secondary)',
+                  fontSize: '0.82rem',
+                  fontWeight: selectedModule === mod.value ? 700 : 500,
+                  cursor: 'pointer',
+                  transition: 'all 0.2s',
+                }}
+              >
+                {mod.label}
+              </button>
             ))}
-          </select>
+          </div>
         </div>
 
         <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', marginTop: '40px' }}>

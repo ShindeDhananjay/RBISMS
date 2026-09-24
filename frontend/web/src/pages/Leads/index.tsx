@@ -3,18 +3,8 @@ import DataTable from '../../components/tables/DataTable';
 import apiClient from '../../services/apiClient';
 import Modal from '../../components/ui/Modal';
 import { FormField, FormButtons } from '../../components/ui/FormComponents';
-import { BRANCH_OFFICES } from '../../constants/branchOffices';
 
-const soNames = [
-  'Shevgaon SO',
-  'Pathardi SO',
-  'Kharwandi kasar SO',
-  'Miri SO',
-  'VSSK SO',
-  'Tisgaon SO',
-  'Bodhegaon SO',
-  'Balamtakali SO'
-];
+
 
 const inputStyle = {
   width: '100%', padding: '12px 16px', background: '#fff',
@@ -144,17 +134,7 @@ const LeadGeneration = () => {
           finally { setSaving(false); }
         }}>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', maxHeight: '60vh', overflowY: 'auto', paddingRight: '12px' }}>
-            <div>
-              <label style={labelStyle}>Office Name</label>
-              <select name="leadByBoName" style={inputStyle} defaultValue={editingItem?.leadByBoName || soNames[0]}>
-                <optgroup label="Sub Offices (SO)">
-                  {soNames.map(so => <option key={so} value={so}>{so}</option>)}
-                </optgroup>
-                <optgroup label="Branch Offices (BO)">
-                  {BRANCH_OFFICES.map(bo => <option key={bo} value={bo}>{bo}</option>)}
-                </optgroup>
-              </select>
-            </div>
+            <FormField label="Office Name" name="leadByBoName" defaultValue={editingItem?.leadByBoName || ''} placeholder="Enter Office Name (SO or BO)" />
             <FormField label="Customer Name" name="nameOfCustomer" required defaultValue={editingItem?.nameOfCustomer} />
             
             <div style={{ gridColumn: 'span 2' }}>
@@ -168,39 +148,11 @@ const LeadGeneration = () => {
             <FormField label="Email ID" name="emailId" type="email" defaultValue={editingItem?.emailId} />
             <FormField label="Visited By" name="visitedBy" defaultValue={editingItem?.visitedBy} />
             
-            <div>
-              <label style={labelStyle}>Type of Lead <span style={{ color: 'var(--ip-red)' }}>*</span></label>
-              <select name="typeOfLead" style={inputStyle} defaultValue={editingItem?.typeOfLead || 'Account Opening'}>
-                <option value="Account Opening">Account Opening</option>
-                <option value="PLI and RPLI">PLI and RPLI</option>
-                <option value="Article delivery">Article delivery</option>
-                <option value="Marchant On boarding">Marchant On boarding</option>
-                <option value="SSA">SSA</option>
-                <option value="IPPB">IPPB</option>
-                <option value="bnpl">bnpl</option>
-                <option value="pm-jjby">pm-jjby</option>
-                <option value="pm-sby">pm-sby</option>
-                <option value="apy">apy</option>
-                <option value="matruvandana account">matruvandana account</option>
-                <option value="ppf account">ppf account</option>
-                <option value="bc point">bc point</option>
-                <option value="postal francisy">postal francisy</option>
-                <option value="mutual funds">mutual funds</option>
-                <option value="kevic">kevic</option>
-                <option value="others">others</option>
-              </select>
-            </div>
+            <FormField label="Type of Lead" name="typeOfLead" required defaultValue={editingItem?.typeOfLead || 'Account Opening'} placeholder="e.g. Account Opening, PLI, SSA, IPPB" />
             
             <FormField label="Resolved On" name="resolvedOn" type="date" defaultValue={editingItem?.resolvedOn} />
             
-            <div>
-              <label style={labelStyle}>Status</label>
-              <select name="status" style={inputStyle} defaultValue={editingItem?.status || 'Pending'}>
-                <option value="Pending">Pending</option>
-                <option value="Follow-up">Follow-up</option>
-                <option value="Converted">Converted</option>
-              </select>
-            </div>
+            <FormField label="Status" name="status" defaultValue={editingItem?.status || 'Pending'} placeholder="e.g. Pending, Follow-up, Converted" />
             <FormField label="Follow-up Date" name="followUpDate" type="date" defaultValue={editingItem?.followUpDate} />
           </div>
           <div style={{ marginTop: '24px' }}>

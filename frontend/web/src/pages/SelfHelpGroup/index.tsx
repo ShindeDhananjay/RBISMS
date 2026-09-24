@@ -3,28 +3,8 @@ import DataTable from '../../components/tables/DataTable';
 import apiClient from '../../services/apiClient';
 import Modal from '../../components/ui/Modal';
 import { FormField, FormButtons } from '../../components/ui/FormComponents';
-import { BRANCH_OFFICES } from '../../constants/branchOffices';
 
-const soNames = [
-  'Shevgaon SO',
-  'Pathardi SO',
-  'Kharwandi kasar SO',
-  'Miri SO',
-  'VSSK SO',
-  'Tisgaon SO',
-  'Bodhegaon SO',
-  'Balamtakali SO'
-];
 
-const inputStyle = {
-  width: '100%', padding: '12px 16px', background: '#fff',
-  border: '1.5px solid var(--panel-border)', borderRadius: '12px',
-  color: 'var(--text-primary)', fontSize: '0.95rem', fontFamily: 'inherit',
-};
-const labelStyle = {
-  display: 'block', marginBottom: '6px', fontWeight: 600,
-  fontSize: '0.88rem', color: 'var(--text-secondary)',
-};
 
 const SelfHelpGroup = () => {
   const [data, setData] = useState<any[]>([]);
@@ -100,28 +80,9 @@ const SelfHelpGroup = () => {
           finally { setSaving(false); }
         }}>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
-            <div style={{ gridColumn: 'span 1' }}>
-              <label style={labelStyle}>Sub Office Name <span style={{ color: 'var(--ip-red)' }}>*</span></label>
-              <select name="soName" required defaultValue={editingItem?.soName || soNames[0]} style={inputStyle}>
-                <option value="">-- Select Sub Office --</option>
-                {soNames.map(so => <option key={so} value={so}>{so}</option>)}
-              </select>
-            </div>
+            <FormField label="Sub Office Name" name="soName" required defaultValue={editingItem?.soName || ''} placeholder="Enter Sub Office Name" />
             
-            <div style={{ gridColumn: 'span 1' }}>
-              <label style={labelStyle}>Branch Office Name <span style={{ color: 'var(--ip-red)' }}>*</span></label>
-              <input
-                name="boName"
-                list="bo-options-shg"
-                required
-                placeholder="Search BO..."
-                defaultValue={editingItem?.boName}
-                style={inputStyle}
-              />
-              <datalist id="bo-options-shg">
-                {BRANCH_OFFICES.map(bo => <option key={bo} value={bo} />)}
-              </datalist>
-            </div>
+            <FormField label="Branch Office Name" name="boName" required defaultValue={editingItem?.boName} placeholder="Enter Branch Office Name" />
 
             <FormField label="Village Name" name="villageName" required defaultValue={editingItem?.villageName} />
             <FormField label="SHG Name" name="shgName" required defaultValue={editingItem?.shgName} />

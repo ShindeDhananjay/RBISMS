@@ -3,28 +3,8 @@ import DataTable from '../../components/tables/DataTable';
 import apiClient from '../../services/apiClient';
 import Modal from '../../components/ui/Modal';
 import { FormField, FormButtons } from '../../components/ui/FormComponents';
-import { BRANCH_OFFICES } from '../../constants/branchOffices';
 
-const soNames = [
-  'Shevgaon SO',
-  'Pathardi SO',
-  'Kharwandi kasar SO',
-  'Miri SO',
-  'VSSK SO',
-  'Tisgaon SO',
-  'Bodhegaon SO',
-  'Balamtakali SO'
-];
 
-const inputStyle = {
-  width: '100%', padding: '12px 16px', background: '#fff',
-  border: '1.5px solid var(--panel-border)', borderRadius: '12px',
-  color: 'var(--text-primary)', fontSize: '0.95rem', fontFamily: 'inherit',
-};
-const labelStyle = {
-  display: 'block', marginBottom: '6px', fontWeight: 600,
-  fontSize: '0.88rem', color: 'var(--text-secondary)',
-};
 
 const SDHAnnualInspection = () => {
   const [data, setData] = useState<any[]>([]);
@@ -151,39 +131,15 @@ const SDHAnnualInspection = () => {
           finally { setSaving(false); }
         }}>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
-            <div style={{ gridColumn: 'span 2' }}>
-              <label style={labelStyle}>Office Name <span style={{ color: 'var(--ip-red)' }}>*</span></label>
-              <select name="officeName" required defaultValue={editingItem?.officeName || soNames[0]} style={inputStyle}>
-                <optgroup label="Sub Offices (SO)">
-                  {soNames.map(so => <option key={so} value={so}>{so}</option>)}
-                </optgroup>
-                <optgroup label="Branch Offices (BO)">
-                  {BRANCH_OFFICES.map(bo => <option key={bo} value={bo}>{bo}</option>)}
-                </optgroup>
-              </select>
-            </div>
+            <FormField label="Office Name" name="officeName" required fullWidth defaultValue={editingItem?.officeName || ''} placeholder="Enter Office Name (SO or BO)" />
             
             <FormField label="Date of Last Inspection (DLI)" name="dli" type="date" required defaultValue={editingItem?.dli ? new Date(editingItem.dli).toISOString().split('T')[0] : ''} />
             
-            <div style={{ gridColumn: 'span 1' }}>
-              <label style={labelStyle}>Class of Office <span style={{ color: 'var(--ip-red)' }}>*</span></label>
-              <select name="classOfOffice" required defaultValue={editingItem?.classOfOffice || 'BO'} style={inputStyle}>
-                <option value="A Class">A Class</option>
-                <option value="B Class">B Class</option>
-                <option value="C Class">C Class</option>
-                <option value="BO">BO</option>
-              </select>
-            </div>
+            <FormField label="Class of Office" name="classOfOffice" required defaultValue={editingItem?.classOfOffice || 'BO'} placeholder="e.g. A Class, B Class, C Class, BO" />
             
             <FormField label="Date of Inspection" name="dateOfInspection" type="date" defaultValue={editingItem?.dateOfInspection ? new Date(editingItem.dateOfInspection).toISOString().split('T')[0] : ''} />
             
-            <div style={{ gridColumn: 'span 1' }}>
-              <label style={labelStyle}>Status</label>
-              <select name="status" defaultValue={editingItem?.status || 'Pending'} style={inputStyle}>
-                <option value="Pending">Pending</option>
-                <option value="Completed">Completed</option>
-              </select>
-            </div>
+            <FormField label="Status" name="status" defaultValue={editingItem?.status || 'Pending'} placeholder="e.g. Pending / Completed" />
           </div>
           <div style={{ marginTop: '24px' }}>
             <FormButtons onCancel={() => { setShowModal(false); setEditingItem(null); }} submitLabel={editingItem ? "Update Inspection" : "Save Inspection"} loading={saving} />

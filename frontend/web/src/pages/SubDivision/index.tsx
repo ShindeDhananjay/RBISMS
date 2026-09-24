@@ -4,15 +4,7 @@ import apiClient from '../../services/apiClient';
 import Modal from '../../components/ui/Modal';
 import { FormField, FormButtons } from '../../components/ui/FormComponents';
 
-const inputStyle = {
-  width: '100%', padding: '12px 16px', background: '#fff',
-  border: '1.5px solid var(--panel-border)', borderRadius: '12px',
-  color: 'var(--text-primary)', fontSize: '0.95rem', fontFamily: 'inherit',
-};
-const labelStyle = {
-  display: 'block', marginBottom: '6px', fontWeight: 600,
-  fontSize: '0.88rem', color: 'var(--text-secondary)',
-};
+
 
 const SubDivision = () => {
   const [data, setData] = useState<any[]>([]);
@@ -155,40 +147,14 @@ const SubDivision = () => {
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', maxHeight: '60vh', overflowY: 'auto', paddingRight: '12px' }}>
             {/* Basic Info */}
             <FormField label="Name of employee" name="employeeName" required defaultValue={editingItem?.employeeName} />
-            <div>
-              <label style={labelStyle}>Designation <span style={{ color: 'var(--ip-red)' }}>*</span></label>
-              <select name="designation" style={inputStyle} required defaultValue={editingItem?.designation || 'Inspector of Posts'}>
-                <option value="Inspector of Posts">Inspector of Posts</option>
-                <option value="Postmaster">Postmaster</option>
-                <option value="Postal Assistant">Postal Assistant</option>
-                <option value="Postman">Postman</option>
-                <option value="MTS">MTS</option>
-                <option value="BPM">BPM</option>
-                <option value="ABPM">ABPM</option>
-                <option value="Dak Sewak">Dak Sewak</option>
-                <option value="Outsider">Outsider</option>
-              </select>
-            </div>
+            <FormField label="Designation" name="designation" required defaultValue={editingItem?.designation || 'Inspector of Posts'} placeholder="Enter designation (e.g. Inspector of Posts)" />
             <FormField label="Posting office" name="postingOffice" required defaultValue={editingItem?.postingOffice} />
             <FormField label="PRAN Number" name="pranNumber" defaultValue={editingItem?.pranNumber} />
             <FormField label="DN office Name" name="dnOfficeName" defaultValue={editingItem?.dnOfficeName} />
             
             {/* Personal Details */}
             <FormField label="Date of Birth" name="dateOfBirth" type="date" defaultValue={editingItem?.dateOfBirth} />
-            <div>
-              <label style={labelStyle}>Blood Group</label>
-              <select name="bloodGroup" style={inputStyle} defaultValue={editingItem?.bloodGroup || ''}>
-                <option value="">Select Blood Group</option>
-                <option value="A+">A+</option>
-                <option value="A-">A-</option>
-                <option value="B+">B+</option>
-                <option value="B-">B-</option>
-                <option value="AB+">AB+</option>
-                <option value="AB-">AB-</option>
-                <option value="O+">O+</option>
-                <option value="O-">O-</option>
-              </select>
-            </div>
+            <FormField label="Blood Group" name="bloodGroup" defaultValue={editingItem?.bloodGroup || ''} placeholder="e.g. A+, B+, O+" />
             <FormField label="Hobby" name="hobby" defaultValue={editingItem?.hobby} />
             <FormField label="Sports activities" name="sportsActivities" defaultValue={editingItem?.sportsActivities} />
             <FormField label="Education" name="education" defaultValue={editingItem?.education} />
@@ -226,14 +192,7 @@ const SubDivision = () => {
               <FormField label="Any awards during last fy year by CO/RO/DO/Sub DN Level" name="awards" fullWidth defaultValue={editingItem?.awards} />
             </div>
             
-            <div>
-              <label style={labelStyle}>Salary taken from</label>
-              <select name="salaryTakenFrom" style={inputStyle} defaultValue={editingItem?.salaryTakenFrom || 'IPPB'}>
-                <option value="IPPB">IPPB</option>
-                <option value="DoP">DoP</option>
-                <option value="Other bank">Other bank</option>
-              </select>
-            </div>
+            <FormField label="Salary taken from" name="salaryTakenFrom" defaultValue={editingItem?.salaryTakenFrom || 'IPPB'} placeholder="e.g. IPPB, DoP, Other bank" />
           </div>
           
           <div style={{ marginTop: '24px' }}>

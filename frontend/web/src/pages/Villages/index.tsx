@@ -3,7 +3,6 @@ import DataTable from '../../components/tables/DataTable';
 import apiClient from '../../services/apiClient';
 import Modal from '../../components/ui/Modal';
 import { FormField, FormButtons } from '../../components/ui/FormComponents';
-import { BRANCH_OFFICES } from '../../constants/branchOffices';
 
 const Villages = () => {
   const [data, setData] = useState<any[]>([]);
@@ -94,25 +93,7 @@ const Villages = () => {
           finally { setSaving(false); }
         }}>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
-            {/* Native Searchable Dropdown using datalist */}
-            <div style={{ gridColumn: 'span 2' }}>
-              <label style={{ display: 'block', marginBottom: '6px', fontWeight: 600, fontSize: '0.88rem', color: 'var(--text-secondary)' }}>
-                BO Name <span style={{ color: 'var(--ip-red)' }}>*</span>
-              </label>
-              <input
-                name="boName"
-                list="bo-options"
-                required
-                placeholder="Search and select BO..."
-                defaultValue={editingItem?.boName}
-                style={{
-                  width: '100%', padding: '12px 16px', background: '#fff', border: '1.5px solid var(--panel-border)', borderRadius: '12px', color: 'var(--text-primary)', fontSize: '0.95rem'
-                }}
-              />
-              <datalist id="bo-options">
-                {BRANCH_OFFICES.map(bo => <option key={bo} value={bo} />)}
-              </datalist>
-            </div>
+            <FormField label="BO Name" name="boName" required fullWidth defaultValue={editingItem?.boName} placeholder="Enter BO Name" />
 
             <FormField label="Village Name" name="name" required defaultValue={editingItem?.name} />
             <FormField label="Pincode" name="pincode" required defaultValue={editingItem?.pincode} />

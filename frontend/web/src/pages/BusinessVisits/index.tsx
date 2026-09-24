@@ -4,15 +4,7 @@ import apiClient from '../../services/apiClient';
 import Modal from '../../components/ui/Modal';
 import { FormField, FormButtons } from '../../components/ui/FormComponents';
 
-const inputStyle = {
-  width: '100%', padding: '12px 16px', background: '#fff',
-  border: '1.5px solid var(--panel-border)', borderRadius: '12px',
-  color: 'var(--text-primary)', fontSize: '0.95rem', fontFamily: 'inherit',
-};
-const labelStyle = {
-  display: 'block', marginBottom: '6px', fontWeight: 600,
-  fontSize: '0.88rem', color: 'var(--text-secondary)',
-};
+
 
 const BusinessVisits = () => {
   const [data, setData] = useState<any[]>([]);
@@ -103,13 +95,7 @@ const BusinessVisits = () => {
             <FormField label="Follow Up By" name="followUpBy" defaultValue={editingItem?.followUpBy} />
             <FormField label="Follow Up Date" name="followUpDate" type="date" defaultValue={editingItem?.followUpDate ? new Date(editingItem.followUpDate).toISOString().split('T')[0] : ''} />
             
-            <div style={{ gridColumn: 'span 1' }}>
-              <label style={labelStyle}>Status</label>
-              <select name="status" defaultValue={editingItem?.status || 'Pending'} style={inputStyle}>
-                <option value="Complete">Complete</option>
-                <option value="Pending">Pending</option>
-              </select>
-            </div>
+            <FormField label="Status" name="status" defaultValue={editingItem?.status || 'Pending'} placeholder="e.g. Complete / Pending" />
           </div>
           <FormButtons onCancel={() => { setShowModal(false); setEditingItem(null); }} submitLabel={editingItem ? "Update Visit" : "Save Visit"} loading={saving} />
         </form>

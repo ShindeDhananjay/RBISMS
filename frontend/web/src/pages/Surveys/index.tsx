@@ -3,7 +3,6 @@ import DataTable from '../../components/tables/DataTable';
 import apiClient from '../../services/apiClient';
 import Modal from '../../components/ui/Modal';
 import { FormField, FormButtons } from '../../components/ui/FormComponents';
-import { BRANCH_OFFICES } from '../../constants/branchOffices';
 
 const Surveys = () => {
   const [data, setData] = useState<any[]>([]);
@@ -82,21 +81,7 @@ const Surveys = () => {
         }}>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
             
-            <div style={{ gridColumn: 'span 1' }}>
-              <label style={{ display: 'block', marginBottom: '6px', fontWeight: 600, fontSize: '0.88rem', color: 'var(--text-secondary)' }}>
-                BO Name
-              </label>
-              <input
-                name="boName"
-                list="bo-options"
-                placeholder="Search BO..."
-                defaultValue={editingItem?.boName}
-                style={{ width: '100%', padding: '12px 16px', background: '#fff', border: '1.5px solid var(--panel-border)', borderRadius: '12px', color: 'var(--text-primary)', fontSize: '0.95rem' }}
-              />
-              <datalist id="bo-options">
-                {BRANCH_OFFICES.map(bo => <option key={bo} value={bo} />)}
-              </datalist>
-            </div>
+            <FormField label="BO Name" name="boName" defaultValue={editingItem?.boName} placeholder="Enter BO Name" />
 
             <FormField label="Village Name" name="villageName" defaultValue={editingItem?.villageName} />
             <FormField label="Anganwadi Name" name="nameOfAnganwadi" required defaultValue={editingItem?.nameOfAnganwadi} />
@@ -106,24 +91,12 @@ const Surveys = () => {
             <FormField label="Children Age" name="childrenAge" defaultValue={editingItem?.childrenAge} />
             <FormField label="Parents Mobile Num" name="parentsMobNum" defaultValue={editingItem?.parentsMobNum} />
             
-            <div style={{ gridColumn: 'span 1' }}>
-              <label style={{ display: 'block', marginBottom: '6px', fontWeight: 600, fontSize: '0.88rem', color: 'var(--text-secondary)' }}>Having SSA/PPF Account</label>
-              <select name="havingSsaPpfAccount" defaultValue={editingItem?.havingSsaPpfAccount || 'No'} style={{ width: '100%', padding: '12px 16px', background: '#fff', border: '1.5px solid var(--panel-border)', borderRadius: '12px', color: 'var(--text-primary)', fontSize: '0.95rem' }}>
-                <option value="Yes">Yes</option>
-                <option value="No">No</option>
-              </select>
-            </div>
+            <FormField label="Having SSA/PPF Account" name="havingSsaPpfAccount" defaultValue={editingItem?.havingSsaPpfAccount || 'No'} placeholder="e.g. Yes / No" />
 
             <FormField label="Pregnant Women Name" name="pregnantWomenName" defaultValue={editingItem?.pregnantWomenName} />
             <FormField label="Pregnant Women Age" name="pregnantWomenAge" defaultValue={editingItem?.pregnantWomenAge} />
             
-            <div style={{ gridColumn: 'span 1' }}>
-              <label style={{ display: 'block', marginBottom: '6px', fontWeight: 600, fontSize: '0.88rem', color: 'var(--text-secondary)' }}>Matruvandana Account</label>
-              <select name="matruvandanaAccount" defaultValue={editingItem?.matruvandanaAccount || 'No'} style={{ width: '100%', padding: '12px 16px', background: '#fff', border: '1.5px solid var(--panel-border)', borderRadius: '12px', color: 'var(--text-primary)', fontSize: '0.95rem' }}>
-                <option value="Yes">Yes</option>
-                <option value="No">No</option>
-              </select>
-            </div>
+            <FormField label="Matruvandana Account" name="matruvandanaAccount" defaultValue={editingItem?.matruvandanaAccount || 'No'} placeholder="e.g. Yes / No" />
 
           </div>
           <div style={{ marginTop: '24px' }}>

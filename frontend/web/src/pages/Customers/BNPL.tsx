@@ -83,13 +83,7 @@ const BNPLCustomers = () => {
               <FormField label="Customer Name" name="name" required defaultValue={editingItem?.name} />
             </div>
             
-            <div style={{ gridColumn: 'span 1' }}>
-              <label style={{ display: 'block', marginBottom: '6px', fontWeight: 600, fontSize: '0.88rem', color: 'var(--text-secondary)' }}>Customer Type</label>
-              <select name="customerType" defaultValue={editingItem?.customerType || 'COD'} style={{ width: '100%', padding: '12px 16px', background: '#fff', border: '1.5px solid var(--panel-border)', borderRadius: '12px', color: 'var(--text-primary)', fontSize: '0.95rem' }}>
-                <option value="COD">COD</option>
-                <option value="BNPL">BNPL</option>
-              </select>
-            </div>
+            <FormField label="Customer Type" name="customerType" defaultValue={editingItem?.customerType || 'COD'} placeholder="e.g. COD / BNPL" />
 
             <FormField label="Mobile" name="mobile" defaultValue={editingItem?.mobile} />
             <FormField label="Email" name="email" type="email" defaultValue={editingItem?.email} />

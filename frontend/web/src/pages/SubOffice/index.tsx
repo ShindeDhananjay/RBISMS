@@ -3,17 +3,6 @@ import DataTable from '../../components/tables/DataTable';
 import apiClient from '../../services/apiClient';
 import Modal from '../../components/ui/Modal';
 import { FormField, FormButtons } from '../../components/ui/FormComponents';
-
-const inputStyle = {
-  width: '100%', padding: '12px 16px', background: '#fff',
-  border: '1.5px solid var(--panel-border)', borderRadius: '12px',
-  color: 'var(--text-primary)', fontSize: '0.95rem', fontFamily: 'inherit',
-};
-const labelStyle = {
-  display: 'block', marginBottom: '6px', fontWeight: 600,
-  fontSize: '0.88rem', color: 'var(--text-secondary)',
-};
-
 const soNames = [
   'Shevgaon SO',
   'Pathardi SO',
@@ -135,28 +124,13 @@ const SubOffice = () => {
           finally { setSaving(false); }
         }}>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '20px' }}>
-            <div>
-              <label style={labelStyle}>Sub Office Name <span style={{ color: 'var(--ip-red)' }}>*</span></label>
-              <select name="name" style={inputStyle} required defaultValue={editingItem?.name || soNames[0]}>
-                {soNames.map(name => (
-                  <option key={name} value={name}>{name}</option>
-                ))}
-              </select>
-            </div>
+            <FormField label="Sub Office Name" name="name" required defaultValue={editingItem?.name || ''} placeholder="Enter Sub Office Name" />
             
             <FormField label="PIN Code" name="pinCode" required defaultValue={editingItem?.pinCode} />
             
             <FormField label="No. of Employees" name="noOfEmployees" type="number" required defaultValue={editingItem?.noOfEmployees || 0} />
             
-            <div>
-              <label style={labelStyle}>Status <span style={{ color: 'var(--ip-red)' }}>*</span></label>
-              <select name="status" style={inputStyle} required defaultValue={editingItem?.status || 'PA'}>
-                <option value="HSG II">HSG II</option>
-                <option value="LSG I">LSG I</option>
-                <option value="Offg LSG">Offg LSG</option>
-                <option value="PA">PA</option>
-              </select>
-            </div>
+            <FormField label="Status" name="status" required defaultValue={editingItem?.status || 'PA'} placeholder="e.g. PA, HSG II, LSG I, Offg LSG" />
           </div>
           <div style={{ marginTop: '24px' }}>
             <FormButtons onCancel={() => setShowModal(false)} submitLabel={editingItem ? "Update Sub Office" : "Save Sub Office"} loading={saving} />

@@ -3,28 +3,8 @@ import DataTable from '../../components/tables/DataTable';
 import apiClient from '../../services/apiClient';
 import Modal from '../../components/ui/Modal';
 import { FormField, FormButtons } from '../../components/ui/FormComponents';
-import { BRANCH_OFFICES } from '../../constants/branchOffices';
 
-const soNames = [
-  'Shevgaon SO',
-  'Pathardi SO',
-  'Kharwandi kasar SO',
-  'Miri SO',
-  'VSSK SO',
-  'Tisgaon SO',
-  'Bodhegaon SO',
-  'Balamtakali SO'
-];
 
-const inputStyle = {
-  width: '100%', padding: '12px 16px', background: '#fff',
-  border: '1.5px solid var(--panel-border)', borderRadius: '12px',
-  color: 'var(--text-primary)', fontSize: '0.95rem', fontFamily: 'inherit',
-};
-const labelStyle = {
-  display: 'block', marginBottom: '6px', fontWeight: 600,
-  fontSize: '0.88rem', color: 'var(--text-secondary)',
-};
 
 const BuildingMaintenance = () => {
   const [data, setData] = useState<any[]>([]);
@@ -136,45 +116,16 @@ const BuildingMaintenance = () => {
           finally { setSaving(false); }
         }}>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', maxHeight: '60vh', overflowY: 'auto', paddingRight: '12px' }}>
-            <div>
-              <label style={labelStyle}>Name of Post office</label>
-              <select name="nameOfPostOffice" style={inputStyle} required defaultValue={editingItem?.nameOfPostOffice || soNames[0]}>
-                <optgroup label="Sub Offices (SO)">
-                  {soNames.map(so => <option key={so} value={so}>{so}</option>)}
-                </optgroup>
-                <optgroup label="Branch Offices (BO)">
-                  {BRANCH_OFFICES.map(bo => <option key={bo} value={bo}>{bo}</option>)}
-                </optgroup>
-              </select>
-            </div>
-            <div>
-              <label style={labelStyle}>Building Type</label>
-              <select name="buildingType" style={inputStyle} defaultValue={editingItem?.buildingType || 'Departmental'}>
-                <option value="Departmental">Departmental</option>
-                <option value="Private">Private</option>
-                <option value="Grampanchayat">Grampanchayat</option>
-              </select>
-            </div>
+            <FormField label="Name of Post office" name="nameOfPostOffice" required defaultValue={editingItem?.nameOfPostOffice || ''} placeholder="Enter Name of Post office" />
+            <FormField label="Building Type" name="buildingType" defaultValue={editingItem?.buildingType || 'Departmental'} placeholder="e.g. Departmental, Private, Grampanchayat" />
             <FormField label="Name of Owner" name="nameOfOwner" defaultValue={editingItem?.nameOfOwner} />
             <FormField label="Mobile Number" name="mobileNumber" defaultValue={editingItem?.mobileNumber} />
             <FormField label="Email ID" name="emailNumber" type="email" defaultValue={editingItem?.emailNumber} />
             <FormField label="07/12 and Gat Number" name="gatNumber0712" defaultValue={editingItem?.gatNumber0712} />
             <FormField label="City Survey Number" name="citySurveyNumber" defaultValue={editingItem?.citySurveyNumber} />
             
-            <div>
-              <label style={labelStyle}>Bathroom</label>
-              <select name="bathroom" style={inputStyle} defaultValue={editingItem?.bathroom || 'Yes'}>
-                <option value="Yes">Yes</option>
-                <option value="No">No</option>
-              </select>
-            </div>
-            <div>
-              <label style={labelStyle}>Store room</label>
-              <select name="storeRoom" style={inputStyle} defaultValue={editingItem?.storeRoom || 'Yes'}>
-                <option value="Yes">Yes</option>
-                <option value="No">No</option>
-              </select>
-            </div>
+            <FormField label="Bathroom" name="bathroom" defaultValue={editingItem?.bathroom || 'Yes'} placeholder="e.g. Yes / No" />
+            <FormField label="Store room" name="storeRoom" defaultValue={editingItem?.storeRoom || 'Yes'} placeholder="e.g. Yes / No" />
             <FormField label="Customer Area sq.mt" name="customerAreaSqMt" type="number" defaultValue={editingItem?.customerAreaSqMt} />
             <FormField label="No of Counters" name="noOfCounters" type="number" defaultValue={editingItem?.noOfCounters} />
             <FormField label="Total Area in SQ Ft" name="totalAreaInSqFt" type="number" defaultValue={editingItem?.totalAreaInSqFt} />
@@ -186,13 +137,7 @@ const BuildingMaintenance = () => {
             
             <FormField label="Corresponding address of owner" name="correspondingAddressOfOwner" defaultValue={editingItem?.correspondingAddressOfOwner} />
             
-            <div>
-              <label style={labelStyle}>Treasury embodied or not?</label>
-              <select name="treasuryEmbodied" style={inputStyle} defaultValue={editingItem?.treasuryEmbodied || 'Yes'}>
-                <option value="Yes">Yes</option>
-                <option value="No">No</option>
-              </select>
-            </div>
+            <FormField label="Treasury embodied or not?" name="treasuryEmbodied" defaultValue={editingItem?.treasuryEmbodied || 'Yes'} placeholder="e.g. Yes / No" />
             
             <FormField label="Last date of Color of building" name="lastDateOfColorOfBuilding" type="date" defaultValue={editingItem?.lastDateOfColorOfBuilding} />
             <FormField label="Requirement of furniture from owner" name="requirementOfFurnitureFromOwner" defaultValue={editingItem?.requirementOfFurnitureFromOwner} />

@@ -3,18 +3,8 @@ import DataTable from '../../components/tables/DataTable';
 import apiClient from '../../services/apiClient';
 import Modal from '../../components/ui/Modal';
 import { FormField, FormButtons } from '../../components/ui/FormComponents';
-import { BRANCH_OFFICES } from '../../constants/branchOffices';
 
-const soNames = [
-  'Shevgaon SO',
-  'Pathardi SO',
-  'Kharwandi kasar SO',
-  'Miri SO',
-  'VSSK SO',
-  'Tisgaon SO',
-  'Bodhegaon SO',
-  'Balamtakali SO'
-];
+
 
 const inputStyle = {
   width: '100%', padding: '12px 16px', background: '#fff',
@@ -124,38 +114,13 @@ const MailOverseerVisit = () => {
           finally { setSaving(false); }
         }}>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
-            <div style={{ gridColumn: 'span 1' }}>
-              <label style={labelStyle}>Beat Number</label>
-              <select name="beatNumber" defaultValue={editingItem?.beatNumber || 'MO1'} style={inputStyle}>
-                <option value="MO1">MO1</option>
-                <option value="MO2">MO2</option>
-              </select>
-            </div>
+            <FormField label="Beat Number" name="beatNumber" defaultValue={editingItem?.beatNumber || 'MO1'} placeholder="e.g. MO1 / MO2" />
             
             <FormField label="Date of Visit" name="dateOfVisit" type="date" required defaultValue={editingItem?.dateOfVisit ? new Date(editingItem.dateOfVisit).toISOString().split('T')[0] : ''} />
 
-            <div style={{ gridColumn: 'span 1' }}>
-              <label style={labelStyle}>Branch Office Name <span style={{ color: 'var(--ip-red)' }}>*</span></label>
-              <input
-                name="boName"
-                list="bo-options-mov"
-                required
-                placeholder="Search BO..."
-                defaultValue={editingItem?.boName}
-                style={inputStyle}
-              />
-              <datalist id="bo-options-mov">
-                {BRANCH_OFFICES.map(bo => <option key={bo} value={bo} />)}
-              </datalist>
-            </div>
+            <FormField label="Branch Office Name" name="boName" required defaultValue={editingItem?.boName} placeholder="Enter Branch Office Name" />
             
-            <div style={{ gridColumn: 'span 1' }}>
-              <label style={labelStyle}>Sub Office Name <span style={{ color: 'var(--ip-red)' }}>*</span></label>
-              <select name="subOfficeName" required defaultValue={editingItem?.subOfficeName || soNames[0]} style={inputStyle}>
-                <option value="">-- Select Sub Office --</option>
-                {soNames.map(so => <option key={so} value={so}>{so}</option>)}
-              </select>
-            </div>
+            <FormField label="Sub Office Name" name="subOfficeName" required defaultValue={editingItem?.subOfficeName || ''} placeholder="Enter Sub Office Name" />
             
             <div style={{ gridColumn: 'span 2' }}>
               <label style={labelStyle}>Result of Visit</label>

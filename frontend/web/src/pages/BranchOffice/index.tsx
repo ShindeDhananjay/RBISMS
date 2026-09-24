@@ -3,18 +3,8 @@ import DataTable from '../../components/tables/DataTable';
 import apiClient from '../../services/apiClient';
 import Modal from '../../components/ui/Modal';
 import { FormField, FormButtons } from '../../components/ui/FormComponents';
-import { BRANCH_OFFICES } from '../../constants/branchOffices';
 
-const soNames = [
-  'Shevgaon SO',
-  'Pathardi SO',
-  'Kharwandi kasar SO',
-  'Miri SO',
-  'VSSK SO',
-  'Tisgaon SO',
-  'Bodhegaon SO',
-  'Balamtakali SO'
-];
+
 
 const BranchOffice = () => {
   const [data, setData] = useState<any[]>([]);
@@ -122,54 +112,15 @@ const BranchOffice = () => {
           finally { setSaving(false); }
         }}>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
-            <div style={{ gridColumn: 'span 2' }}>
-              <label style={{ display: 'block', marginBottom: '6px', fontWeight: 600, fontSize: '0.88rem', color: 'var(--text-secondary)' }}>
-                Sub Office Name
-              </label>
-              <select name="subOfficeName" defaultValue={editingItem?.subOfficeName || soNames[0]} style={{ width: '100%', padding: '12px 16px', background: '#fff', border: '1.5px solid var(--panel-border)', borderRadius: '12px', color: 'var(--text-primary)', fontSize: '0.95rem' }}>
-                <option value="">-- Select Sub Office --</option>
-                {soNames.map(so => (
-                  <option key={so} value={so}>{so}</option>
-                ))}
-              </select>
-            </div>
+            <FormField label="Sub Office Name" name="subOfficeName" fullWidth defaultValue={editingItem?.subOfficeName || ''} placeholder="Enter Sub Office Name" />
 
-            <div style={{ gridColumn: 'span 1' }}>
-              <label style={{ display: 'block', marginBottom: '6px', fontWeight: 600, fontSize: '0.88rem', color: 'var(--text-secondary)' }}>
-                Branch Office Name <span style={{ color: 'var(--ip-red)' }}>*</span>
-              </label>
-              <input
-                name="name"
-                list="bo-options"
-                required
-                placeholder="Search BO..."
-                defaultValue={editingItem?.name}
-                style={{ width: '100%', padding: '12px 16px', background: '#fff', border: '1.5px solid var(--panel-border)', borderRadius: '12px', color: 'var(--text-primary)', fontSize: '0.95rem' }}
-              />
-              <datalist id="bo-options">
-                {BRANCH_OFFICES.map(bo => <option key={bo} value={bo} />)}
-              </datalist>
-            </div>
+            <FormField label="Branch Office Name" name="name" required defaultValue={editingItem?.name} placeholder="Enter Branch Office Name" />
             
-            <div style={{ gridColumn: 'span 1' }}>
-              <label style={{ display: 'block', marginBottom: '6px', fontWeight: 600, fontSize: '0.88rem', color: 'var(--text-secondary)' }}>Post</label>
-              <select name="post" defaultValue={editingItem?.post || 'BPM'} style={{ width: '100%', padding: '12px 16px', background: '#fff', border: '1.5px solid var(--panel-border)', borderRadius: '12px', color: 'var(--text-primary)', fontSize: '0.95rem' }}>
-                <option value="BPM">BPM</option>
-                <option value="ABPM">ABPM</option>
-                <option value="Outsider">Outsider</option>
-              </select>
-            </div>
+            <FormField label="Post" name="post" defaultValue={editingItem?.post || 'BPM'} placeholder="e.g. BPM, ABPM, Outsider" />
 
             <FormField label="Pincode" name="pincode" defaultValue={editingItem?.pincode} />
 
-            <div style={{ gridColumn: 'span 1' }}>
-              <label style={{ display: 'block', marginBottom: '6px', fontWeight: 600, fontSize: '0.88rem', color: 'var(--text-secondary)' }}>Status</label>
-              <select name="status" defaultValue={editingItem?.status || 'single handed'} style={{ width: '100%', padding: '12px 16px', background: '#fff', border: '1.5px solid var(--panel-border)', borderRadius: '12px', color: 'var(--text-primary)', fontSize: '0.95rem' }}>
-                <option value="single handed">Single Handed</option>
-                <option value="double handed">Double Handed</option>
-                <option value="vacant">Vacant</option>
-              </select>
-            </div>
+            <FormField label="Status" name="status" defaultValue={editingItem?.status || 'single handed'} placeholder="e.g. Single Handed, Double Handed, Vacant" />
             
           </div>
           <FormButtons onCancel={() => { setShowModal(false); setEditingItem(null); }} submitLabel={editingItem ? "Update Branch Office" : "Save Branch Office"} loading={saving} />

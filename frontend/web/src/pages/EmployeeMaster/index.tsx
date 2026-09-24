@@ -4,15 +4,7 @@ import apiClient from '../../services/apiClient';
 import Modal from '../../components/ui/Modal';
 import { FormField, FormButtons } from '../../components/ui/FormComponents';
 
-const inputStyle = {
-  width: '100%', padding: '12px 16px', background: '#fff',
-  border: '1.5px solid var(--panel-border)', borderRadius: '12px',
-  color: 'var(--text-primary)', fontSize: '0.95rem', fontFamily: 'inherit',
-};
-const labelStyle = {
-  display: 'block', marginBottom: '6px', fontWeight: 600,
-  fontSize: '0.88rem', color: 'var(--text-secondary)',
-};
+
 
 const EmployeeMaster = () => {
   const [data, setData] = useState<any[]>([]);
@@ -104,15 +96,7 @@ const EmployeeMaster = () => {
             <FormField label="Name" name="employeeName" required />
             <FormField label="Mobile" name="mobile" required />
             <FormField label="Designation" name="designation" required />
-            <div>
-              <label style={labelStyle}>Role <span style={{ color: 'var(--ip-red)' }}>*</span></label>
-              <select name="role" style={inputStyle}>
-                <option value="BPM">BPM</option>
-                <option value="ABPM">ABPM</option>
-                <option value="Postmaster">Postmaster</option>
-                <option value="Inspector">Inspector</option>
-              </select>
-            </div>
+            <FormField label="Role" name="role" required defaultValue="BPM" placeholder="e.g. BPM, ABPM, Postmaster, Inspector" />
             <FormField label="Blood Group" name="bloodGroup" />
             <FormField label="Password" name="password" type="password" required fullWidth />
           </div>
