@@ -2,6 +2,7 @@ import mongoose, { Schema, Document } from 'mongoose';
 
 export interface IBankSurvey extends Document {
   // Add interfaces manually if strictly typed
+  userId?: mongoose.Types.ObjectId;
   entryBy?: string;
   createdAt: Date;
   updatedAt: Date;
@@ -10,6 +11,7 @@ export interface IBankSurvey extends Document {
 const BankSurveySchema: Schema = new Schema({
   villageId: {type: mongoose.Schema.Types.ObjectId, ref: 'Village'}, bankName: String, branchDetails: String, salaryAccounts: Number
 ,
+  userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
   entryBy: { type: String }
 }, { timestamps: true });
 

@@ -11,7 +11,9 @@ export const createSubOffice = async (req: Request, res: Response, next: NextFun
 
 export const getAllSubOffice = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
-    const data = await SubOffice.find();
+    const userFilter = (req as any).user && (req as any).user.role !== 'Super Admin' ? { userId: (req as any).user.id } : {};
+
+    const data = await SubOffice.find(userFilter);
     res.json({ data });
   } catch (error) { next(error); }
 };

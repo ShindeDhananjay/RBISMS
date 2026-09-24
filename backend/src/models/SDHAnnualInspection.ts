@@ -6,6 +6,7 @@ export interface ISDHAnnualInspection extends Document {
   classOfOffice: string;
   dateOfInspection?: Date;
   status?: string;
+  userId?: mongoose.Types.ObjectId;
   entryBy?: string;
   createdAt: Date;
   updatedAt: Date;
@@ -18,6 +19,7 @@ const SDHAnnualInspectionSchema: Schema = new Schema({
   dateOfInspection: { type: Date },
   status: { type: String, enum: ['Pending', 'Completed', 'pending', 'completed'], default: 'Pending' }
 ,
+  userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
   entryBy: { type: String }
 }, { timestamps: true });
 

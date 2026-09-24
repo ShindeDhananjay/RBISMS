@@ -2,6 +2,7 @@ import mongoose, { Schema, Document } from 'mongoose';
 
 export interface IVillage extends Document {
   // Add interfaces manually if strictly typed
+  userId?: mongoose.Types.ObjectId;
   entryBy?: string;
   createdAt: Date;
   updatedAt: Date;
@@ -29,6 +30,7 @@ const VillageSchema: Schema = new Schema({
   talathiName: String,
   gramsewakName: String
 ,
+  userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
   entryBy: { type: String }
 }, { timestamps: true });
 

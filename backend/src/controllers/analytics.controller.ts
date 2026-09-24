@@ -15,27 +15,29 @@ import InstituteMSME from '../models/InstituteMSME';
 
 export const getDashboardKPIs = async (req: Request, res: Response) => {
   try {
-    const totalVillages = await Village.countDocuments();
+    const userFilter = (req as any).user && (req as any).user.role !== 'Super Admin' ? { userId: (req as any).user.id } : {};
+
+    const totalVillages = await Village.countDocuments(userFilter);
     
     // Total Leads
-    const totalLeads = await LeadGeneration.countDocuments();
+    const totalLeads = await LeadGeneration.countDocuments(userFilter);
     
     // Pending Inspections
-    const pendingInspections = await SDHAnnualInspection.countDocuments({ status: { $regex: /^pending$/i } });
+    const pendingInspections = await SDHAnnualInspection.countDocuments({  status: { $regex: /^pending$/i , ...userFilter } });
     
     // Total Surveys across a few collections
-    const anganwadiCount = await AnganwadiSurvey.countDocuments();
-    const schoolCount = await SchoolSurvey.countDocuments();
-    const hospitalCount = await HospitalSurvey.countDocuments();
-    const factoryCount = await FactorySurvey.countDocuments();
-    const bankCount = await BankSurvey.countDocuments();
+    const anganwadiCount = await AnganwadiSurvey.countDocuments(userFilter);
+    const schoolCount = await SchoolSurvey.countDocuments(userFilter);
+    const hospitalCount = await HospitalSurvey.countDocuments(userFilter);
+    const factoryCount = await FactorySurvey.countDocuments(userFilter);
+    const bankCount = await BankSurvey.countDocuments(userFilter);
     const totalSurveys = anganwadiCount + schoolCount + hospitalCount + factoryCount + bankCount;
 
     // Client / Customer Portfolio Distribution for Pie Chart
-    const bnplCount = await BNPLCustomer.countDocuments();
-    const bulkCount = await BulkCustomer.countDocuments();
-    const shgCount = await SelfHelpGroup.countDocuments();
-    const msmeCount = await InstituteMSME.countDocuments();
+    const bnplCount = await BNPLCustomer.countDocuments(userFilter);
+    const bulkCount = await BulkCustomer.countDocuments(userFilter);
+    const shgCount = await SelfHelpGroup.countDocuments(userFilter);
+    const msmeCount = await InstituteMSME.countDocuments(userFilter);
 
     const clientDistribution = [
       { name: 'BNPL Customers', value: bnplCount },
@@ -50,7 +52,7 @@ export const getDashboardKPIs = async (req: Request, res: Response) => {
     }
 
     // Leads by Month for Area Chart (6 Months View)
-    const leads = await LeadGeneration.find({}, 'createdAt status');
+    const leads = await LeadGeneration.find({ ...userFilter }, 'createdAt status');
     const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     
     const currentMonth = new Date().getMonth();
@@ -94,9 +96,11 @@ export const getDashboardKPIs = async (req: Request, res: Response) => {
 
 export const getAnalyticsTrends = async (req: Request, res: Response) => {
   try {
+    const userFilter = (req as any).user && (req as any).user.role !== 'Super Admin' ? { userId: (req as any).user.id } : {};
+
     // Lead Generation Trends Line Chart
     // Assuming BNPL, Bulk, Retail
-    const leads = await LeadGeneration.find({}, 'typeOfLead createdAt');
+    const leads = await LeadGeneration.find({ ...userFilter }, 'typeOfLead createdAt');
     const currentMonth = new Date().getMonth();
     const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     
@@ -121,12 +125,15 @@ export const getAnalyticsTrends = async (req: Request, res: Response) => {
 
     // Operational Task Execution Data (Replacing Mock Revenue Baseline)
     const businessVisits = await BusinessVisit.aggregate([
+      { $match: userFilter },
       { $group: { _id: "$status", count: { $sum: 1 } } }
     ]);
     const sdhInspections = await SDHAnnualInspection.aggregate([
+      { $match: userFilter },
       { $group: { _id: { $toLower: "$status" }, count: { $sum: 1 } } }
     ]);
     const leadStats = await LeadGeneration.aggregate([
+      { $match: userFilter },
       { $group: { _id: "$status", count: { $sum: 1 } } }
     ]);
 

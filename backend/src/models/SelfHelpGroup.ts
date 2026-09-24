@@ -6,6 +6,7 @@ export interface ISelfHelpGroup extends Document {
   villageName: string;
   shgName: string;
   contactNumber: string;
+  userId?: mongoose.Types.ObjectId;
   entryBy?: string;
   createdAt: Date;
   updatedAt: Date;
@@ -18,6 +19,7 @@ const SelfHelpGroupSchema: Schema = new Schema({
   shgName: { type: String, required: true },
   contactNumber: { type: String }
 ,
+  userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
   entryBy: { type: String }
 }, { timestamps: true });
 

@@ -11,7 +11,9 @@ export const createSubDivision = async (req: Request, res: Response, next: NextF
 
 export const getAllSubDivision = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
-    const data = await SubDivision.find();
+    const userFilter = (req as any).user && (req as any).user.role !== 'Super Admin' ? { userId: (req as any).user.id } : {};
+
+    const data = await SubDivision.find(userFilter);
     res.json({ data });
   } catch (error) { next(error); }
 };

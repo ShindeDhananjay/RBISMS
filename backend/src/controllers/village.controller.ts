@@ -14,6 +14,8 @@ export const createVillage = async (req: AuthRequest, res: Response, next: NextF
 
 export const getAllVillage = async (req: AuthRequest, res: Response, next: NextFunction): Promise<void> => {
   try {
+    const userFilter = (req as any).user && (req as any).user.role !== 'Super Admin' ? { userId: (req as any).user.id } : {};
+
     let query: any = {};
     if (req.user?.role === 'User') {
       query.createdBy = req.user.id;

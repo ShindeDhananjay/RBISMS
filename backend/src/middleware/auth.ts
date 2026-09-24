@@ -28,6 +28,7 @@ export const authenticate = async (req: AuthRequest, res: Response, next: NextFu
       const user = await User.findById(decoded.id);
       if (user) {
         req.body.entryBy = user.employeeName || user.username;
+        req.body.userId = decoded.id;
       }
     }
 

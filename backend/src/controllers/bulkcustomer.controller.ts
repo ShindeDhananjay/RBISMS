@@ -11,7 +11,9 @@ export const createBulkCustomer = async (req: Request, res: Response, next: Next
 
 export const getAllBulkCustomer = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
-    const data = await BulkCustomer.find();
+    const userFilter = (req as any).user && (req as any).user.role !== 'Super Admin' ? { userId: (req as any).user.id } : {};
+
+    const data = await BulkCustomer.find(userFilter);
     res.json({ data });
   } catch (error) { next(error); }
 };

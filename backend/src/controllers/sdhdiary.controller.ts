@@ -15,7 +15,9 @@ export const createSDHDiary = async (req: Request, res: Response) => {
 // Get all SDH Diary entries
 export const getAllSDHDiary = async (req: Request, res: Response) => {
   try {
-    const entries = await SDHDiary.find().sort({ createdAt: -1 });
+    const userFilter = (req as any).user && (req as any).user.role !== 'Super Admin' ? { userId: (req as any).user.id } : {};
+
+    const entries = await SDHDiary.find(userFilter).sort({ createdAt: -1 });
     res.status(200).json({ success: true, data: entries });
   } catch (error: any) {
     res.status(500).json({ success: false, error: error.message });

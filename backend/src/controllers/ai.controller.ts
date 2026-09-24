@@ -4,13 +4,15 @@ import { Request, Response } from 'express';
 
 export const generateScore = async (req: Request, res: Response) => {
   try {
+    const userFilter = (req as any).user && (req as any).user.role !== 'Super Admin' ? { userId: (req as any).user.id } : {};
+
     const { villageId } = req.params;
 
     // TODO: In a fully fleshed out system, we would query the database here:
     // const population = await GramPanchayatModel.findOne({ villageId });
-    // const schools = await SchoolSurveyModel.countDocuments({ villageId });
-    // const hospitals = await HospitalSurveyModel.countDocuments({ villageId });
-    // const activeParcels = await ParcelModel.countDocuments({ villageId, status: 'Active' });
+    // const schools = await SchoolSurveyModel.countDocuments({  villageId , ...userFilter });
+    // const hospitals = await HospitalSurveyModel.countDocuments({  villageId , ...userFilter });
+    // const activeParcels = await ParcelModel.countDocuments({  villageId, status: 'Active' , ...userFilter });
 
     // Mocking the aggregated data for the AI engine
     const aggregatedData = {

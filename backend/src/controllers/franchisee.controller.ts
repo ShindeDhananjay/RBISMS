@@ -13,7 +13,9 @@ export const createFranchisee = async (req: Request, res: Response, next: NextFu
 
 export const getAllFranchisees = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
-    const franchisees = await Franchisee.find().sort({ createdAt: -1 });
+    const userFilter = (req as any).user && (req as any).user.role !== 'Super Admin' ? { userId: (req as any).user.id } : {};
+
+    const franchisees = await Franchisee.find(userFilter).sort({ createdAt: -1 });
     res.json({ data: franchisees });
   } catch (error) {
     next(error);

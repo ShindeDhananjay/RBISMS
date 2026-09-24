@@ -11,7 +11,9 @@ export const createFactorySurvey = async (req: Request, res: Response, next: Nex
 
 export const getAllFactorySurvey = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
-    const data = await FactorySurvey.find();
+    const userFilter = (req as any).user && (req as any).user.role !== 'Super Admin' ? { userId: (req as any).user.id } : {};
+
+    const data = await FactorySurvey.find(userFilter);
     res.json({ data });
   } catch (error) { next(error); }
 };

@@ -13,7 +13,9 @@ export const createSDHInspection = async (req: Request, res: Response): Promise<
 
 export const getAllSDHInspection = async (req: Request, res: Response): Promise<void> => {
   try {
-    const entries = await SDHInspection.find().sort({ createdAt: -1 });
+    const userFilter = (req as any).user && (req as any).user.role !== 'Super Admin' ? { userId: (req as any).user.id } : {};
+
+    const entries = await SDHInspection.find(userFilter).sort({ createdAt: -1 });
     res.status(200).json({ success: true, data: entries });
   } catch (error: any) {
     res.status(500).json({ success: false, message: error.message });

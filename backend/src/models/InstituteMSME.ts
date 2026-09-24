@@ -7,6 +7,7 @@ export interface IInstituteMSME extends Document {
   fullName: string;
   productionType: string;
   numOfEmployees: number;
+  userId?: mongoose.Types.ObjectId;
   entryBy?: string;
   createdAt: Date;
   updatedAt: Date;
@@ -20,6 +21,7 @@ const InstituteMSMESchema: Schema = new Schema({
   productionType: { type: String },
   numOfEmployees: { type: Number }
 ,
+  userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
   entryBy: { type: String }
 }, { timestamps: true });
 

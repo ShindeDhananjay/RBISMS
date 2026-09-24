@@ -8,6 +8,7 @@ export interface ISDHDiary extends Document {
   toTime?: string;
   distance: number;
   purposeOfVisit: string;
+  userId?: mongoose.Types.ObjectId;
   entryBy?: string;
   createdAt: Date;
   updatedAt: Date;
@@ -22,6 +23,7 @@ const SDHDiarySchema: Schema = new Schema({
   distance: { type: Number },
   purposeOfVisit: { type: String }
 ,
+  userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
   entryBy: { type: String }
 }, { timestamps: true });
 

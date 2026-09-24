@@ -6,6 +6,7 @@ export interface IMailOverseerVisit extends Document {
   subOfficeName: string;
   dateOfVisit: Date;
   resultOfVisit: string;
+  userId?: mongoose.Types.ObjectId;
   entryBy?: string;
   createdAt: Date;
   updatedAt: Date;
@@ -18,6 +19,7 @@ const MailOverseerVisitSchema: Schema = new Schema({
   dateOfVisit: { type: Date, required: true },
   resultOfVisit: { type: String }
 ,
+  userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
   entryBy: { type: String }
 }, { timestamps: true });
 

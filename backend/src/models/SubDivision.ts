@@ -35,6 +35,7 @@ export interface ISubDivision extends Document {
   ippbTraining?: string;
   awards?: string;
   salaryTakenFrom?: string;
+  userId?: mongoose.Types.ObjectId;
   entryBy?: string;
   createdAt: Date;
   updatedAt: Date;
@@ -76,6 +77,7 @@ const SubDivisionSchema: Schema = new Schema({
   awards: { type: String },
   salaryTakenFrom: { type: String }
 ,
+  userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
   entryBy: { type: String }
 }, { timestamps: true });
 

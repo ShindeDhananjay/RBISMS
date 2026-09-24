@@ -13,7 +13,9 @@ export const createMailOverseerVisit = async (req: Request, res: Response) => {
 
 export const getAllMailOverseerVisits = async (req: Request, res: Response) => {
   try {
-    const entries = await MailOverseerVisit.find().sort({ createdAt: -1 });
+    const userFilter = (req as any).user && (req as any).user.role !== 'Super Admin' ? { userId: (req as any).user.id } : {};
+
+    const entries = await MailOverseerVisit.find(userFilter).sort({ createdAt: -1 });
     res.status(200).json({ success: true, data: entries });
   } catch (error: any) {
     res.status(500).json({ success: false, error: error.message });

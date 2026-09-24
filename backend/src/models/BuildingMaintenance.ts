@@ -22,6 +22,7 @@ export interface IBuildingMaintenance extends Document {
   lastDateOfColorOfBuilding?: Date;
   requirementOfFurnitureFromOwner?: string;
   lastDateOfSanitizationOfBuilding?: Date;
+  userId?: mongoose.Types.ObjectId;
   entryBy?: string;
   createdAt: Date;
   updatedAt: Date;
@@ -50,6 +51,7 @@ const BuildingMaintenanceSchema: Schema = new Schema({
   requirementOfFurnitureFromOwner: { type: String },
   lastDateOfSanitizationOfBuilding: { type: Date }
 ,
+  userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
   entryBy: { type: String }
 }, { timestamps: true });
 

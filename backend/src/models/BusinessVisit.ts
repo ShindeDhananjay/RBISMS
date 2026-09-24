@@ -2,6 +2,7 @@ import mongoose, { Schema, Document } from 'mongoose';
 
 export interface IBusinessVisit extends Document {
   // Add interfaces manually if strictly typed
+  userId?: mongoose.Types.ObjectId;
   entryBy?: string;
   createdAt: Date;
   updatedAt: Date;
@@ -19,6 +20,7 @@ const BusinessVisitSchema: Schema = new Schema({
   followUpDate: Date,
   status: { type: String, enum: ['Complete', 'Pending'], default: 'Pending' }
 ,
+  userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
   entryBy: { type: String }
 }, { timestamps: true });
 

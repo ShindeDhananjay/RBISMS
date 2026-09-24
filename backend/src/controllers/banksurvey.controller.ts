@@ -11,7 +11,9 @@ export const createBankSurvey = async (req: Request, res: Response, next: NextFu
 
 export const getAllBankSurvey = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
-    const data = await BankSurvey.find();
+    const userFilter = (req as any).user && (req as any).user.role !== 'Super Admin' ? { userId: (req as any).user.id } : {};
+
+    const data = await BankSurvey.find(userFilter);
     res.json({ data });
   } catch (error) { next(error); }
 };
